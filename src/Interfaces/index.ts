@@ -1,4 +1,3 @@
-import { INSURANCES } from '../Features/Data';
 export interface Insurance {
   name: string;
   id: number;

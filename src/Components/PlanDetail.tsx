@@ -15,7 +15,7 @@ const PlanDetails = ({ data }: PlanDetailsProps): JSX.Element => {
           backgroundImage: `url(${data.image})`,
         }}
       >
-        <p className="label">{data.price}</p>
+        <p className="price">${data.price}</p>
       </div>
       <div className="card-title">
         <div className="title">{data.name}</div>

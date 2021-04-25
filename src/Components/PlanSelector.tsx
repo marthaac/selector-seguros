@@ -15,13 +15,12 @@ const PlanSelector = ({ data, onClick }: PlanSelectorProps): JSX.Element => {
       <select
         name="insurances"
         id="insurances"
-        placeholder="Seleccione"
         value={selectedOption || 0}
         className={`select ${selectedOption === 0 ? '' : 'active'}`}
         onChange={(e) => setSelectedOption(+e.target.value)}
       >
         <option value="0" disabled>
-          Seguro
+          Seleccione Seguro...
         </option>
         {data.map((element, index) => (
           <option value={element.id} key={index}>
@@ -31,11 +30,10 @@ const PlanSelector = ({ data, onClick }: PlanSelectorProps): JSX.Element => {
       </select>
       <button
         className="boton"
-        onClick={() => {
-          onClick(selectedOption);
-        }}
+        disabled={selectedOption === 0}
+        onClick={() => onClick(selectedOption)}
       >
-        Botón
+        Buscar
       </button>
     </div>
   );
