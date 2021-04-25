@@ -1,0 +1,42 @@
+.selector {
+  display: flex;
+  flex-direction: row;
+  width: 328px;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.select {
+  border: 1px solid #dde3ed;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #afbacc;
+  padding: 10px;
+  outline: none;
+}
+
+.active {
+  border: 2px solid #1f61f7;
+  color: #1f61f7;
+}
+
+.boton {
+  padding: 8px 32px;
+  background: #1f61f7;
+  box-shadow: 0px 10px 16px rgba(18, 25, 84, 0.07);
+  border-radius: 1000px;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

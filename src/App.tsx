@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import PlanSelector from './Components/PlanSelector';
+import { INSURANCES } from './Features/Data';
+import { getInsuranceDetail } from './Service/api';
+import { InsuranceDetail } from './Interfaces/index';
+import PlanDetails from './Components/PlanDetail';
+import Loading from './Components/Loading';
 
 function App() {
+  const [detail, setDetail] = useState<InsuranceDetail>();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const click = async (selectedValue: number) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const { data } = await getInsuranceDetail(selectedValue);
+      setDetail(data.insurance);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PlanSelector data={INSURANCES} onClick={click} />
+
+      {loading ? <Loading /> : detail && <PlanDetails data={detail} />}
+
+      {error && <h2 className="error">Ha ocurrido un error</h2>}
     </div>
   );
 }
